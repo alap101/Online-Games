@@ -1,0 +1,155 @@
+import React, { useState } from 'react';
+
+// === أكواد الألعاب المدمجة والآمنة ===
+
+// 1. كود لعبة الثعبان (Snake)
+const SnakeGame = () => {
+  const [score, setScore] = React.useState(0);
+  return (
+    <div className="flex flex-col items-center justify-center bg-gray-900 p-6 rounded-xl border border-purple-500/30 shadow-2xl w-full max-w-md mx-auto">
+      <h3 className="text-xl font-bold text-purple-400 mb-2">لعبة الثعبان المطورة</h3>
+      <p className="text-gray-400 text-sm mb-4">اضغط على الأزرار للتحكم بالثعبان وأكل النقاط اللامعة!</p>
+      <div className="w-64 h-64 bg-black rounded-lg border-2 border-purple-600 relative flex items-center justify-center">
+        {/* هنا يتحرك الثعبان - محاكاة برمجية مبسطة */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+          <div className="w-4 h-4 bg-green-500 rounded-sm animate-pulse mx-auto mb-2"></div>
+          <span className="text-xs text-gray-500">جاري تشغيل محرك اللعبة...</span>
+        </div>
+        <div className="absolute top-4 right-4 bg-purple-900/80 text-white px-2 py-1 rounded text-xs">
+          النقاط: {score}
+        </div>
+      </div>
+      <div className="grid grid-cols-3 gap-2 mt-4 w-36">
+        <div></div>
+        <button onClick={() => setScore(score + 10)} className="bg-purple-600 hover:bg-purple-700 text-white p-2 rounded font-bold">▲</button>
+        <div></div>
+        <button className="bg-purple-600 hover:bg-purple-700 text-white p-2 rounded font-bold">◀</button>
+        <button className="bg-purple-600 hover:bg-purple-700 text-white p-2 rounded font-bold">▼</button>
+        <button className="bg-purple-600 hover:bg-purple-700 text-white p-2 rounded font-bold">▶</button>
+      </div>
+    </div>
+  );
+};
+
+// 2. كود لعبة 2048
+const Game2048 = () => {
+  const [score, setScore] = React.useState(0);
+  return (
+    <div className="flex flex-col items-center justify-center bg-gray-900 p-6 rounded-xl border border-blue-500/30 shadow-2xl w-full max-w-md mx-auto">
+      <h3 className="text-xl font-bold text-blue-400 mb-2">لعبة 2048 الشهيرة</h3>
+      <p className="text-gray-400 text-sm mb-4">اجمع الأرقام المتشابهة لتصل إلى المربع 2048!</p>
+      <div className="grid grid-cols-4 gap-2 p-2 bg-gray-800 rounded-lg w-64 h-64">
+        <div className="bg-amber-100 text-gray-800 font-bold flex items-center justify-center rounded text-xl shadow">2</div>
+        <div className="bg-amber-200 text-gray-800 font-bold flex items-center justify-center rounded text-xl shadow">4</div>
+        <div className="bg-gray-700 rounded"></div>
+        <div className="bg-gray-700 rounded"></div>
+        <div className="bg-gray-700 rounded"></div>
+        <div className="bg-amber-300 text-gray-800 font-bold flex items-center justify-center rounded text-xl shadow">8</div>
+        <div className="bg-gray-700 rounded"></div>
+        <div className="bg-gray-700 rounded"></div>
+        <div className="bg-gray-700 rounded"></div>
+        <div className="bg-gray-700 rounded"></div>
+        <div className="bg-amber-400 text-white font-bold flex items-center justify-center rounded text-xl shadow">16</div>
+        <div className="bg-gray-700 rounded"></div>
+        <div className="bg-gray-700 rounded"></div>
+        <div className="bg-gray-700 rounded"></div>
+        <div className="bg-gray-700 rounded"></div>
+        <div className="bg-gray-700 rounded"></div>
+      </div>
+      <button onClick={() => setScore(score + 4)} className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-all">
+        تحريك المربعات (+{score})
+      </button>
+    </div>
+  );
+};
+
+// === الصفحة الرئيسية للموقع (ستايل CrazyGames) ===
+export default function App() {
+  const [activeGame, setActiveGame] = useState(null);
+
+  // بيانات الألعاب المعروضة في المربعات
+  const gamesList = [
+    { id: 'snake', title: 'لعبة الثعبان', image: '🐍', color: 'from-green-500 to-emerald-700', component: <SnakeGame /> },
+    { id: '2048', title: 'لعبة 2048', image: '🔢', color: 'from-amber-500 to-orange-700', component: <Game2048 /> },
+    { id: 'cars', title: 'سباق سيارات (قريباً)', image: '🏎️', color: 'from-red-500 to-rose-700', disabled: true },
+    { id: 'action', title: 'قتال وقتام (قريباً)', image: '⚔️', color: 'from-blue-500 to-indigo-700', disabled: true },
+  ];
+
+  return (
+    <div className="min-h-screen bg-[#0b0c10] text-white font-sans rtl">
+      {/* الهيدر العلوي */}
+      <header className="bg-[#1f2833] border-b border-purple-600/20 py-4 px-6 flex justify-between items-center sticky top-0 z-50 shadow-md">
+        <div className="flex items-center gap-2">
+          <span className="text-2xl">🎮</span>
+          <h1 className="text-2xl font-black tracking-wider bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+            CRAZY_GAMES_CLONE
+          </h1>
+        </div>
+        <div className="text-sm bg-purple-900/40 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-full font-medium">
+          ألعاب مدمجة وآمنة 100%
+        </div>
+      </header>
+
+      <main className="max-w-7xl mx-auto p-6">
+        {/* قسم تشغيل اللعبة النشطة */}
+        {activeGame ? (
+          <div className="mb-12 bg-[#1f2833] p-6 rounded-2xl border border-purple-500/20 shadow-xl">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                <span>🕹️</span> وضع اللعب الآن
+              </h2>
+              <button 
+                onClick={() => setActiveGame(null)} 
+                className="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white px-4 py-1.5 rounded-lg text-sm font-semibold transition-all"
+              >
+                إغلاق اللعبة ✕
+              </button>
+            </div>
+            {/* عرض كود اللعبة المختار */}
+            <div className="py-4">
+              {gamesList.find(g => g.id === activeGame)?.component}
+            </div>
+          </div>
+        ) : (
+          /* بنر ترحيبي إذا لم تكن هناك لعبة مفتوحة */
+          <div className="mb-12 bg-gradient-to-r from-purple-900/40 via-indigo-900/20 to-transparent p-8 rounded-2xl border border-purple-500/10 text-center md:text-right">
+            <h2 className="text-2xl md:text-3xl font-extrabold mb-2 text-purple-300">اختر لعبتك المفضلة وابدأ اللعب فوراً!</h2>
+            <p className="text-gray-400 max-w-xl text-sm md:text-base">جميع الألعاب مدمجة مباشرة داخل الموقع وتعمل بسرعة فائقة وبأمان تام على جهازك.</p>
+          </div>
+        )}
+
+        {/* شبكة الألعاب (The Grid) ستايل كرازي قيمز */}
+        <h2 className="text-xl font-bold mb-6 text-gray-300 flex items-center gap-2">
+          <span className="inline-block w-2 h-6 bg-purple-600 rounded-sm"></span>
+          ألعاب المقترحة لك
+        </h2>
+        
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          {gamesList.map((game) => (
+            <button
+              key={game.id}
+              disabled={game.disabled}
+              onClick={() => setActiveGame(game.id)}
+              className={`group relative aspect-square rounded-xl overflow-hidden bg-gradient-to-br ${game.color} p-0.5 shadow-lg transition-all duration-300 hover:-translate-y-1.5 hover:shadow-purple-500/20 disabled:opacity-50 disabled:hover:translate-y-0`}
+            >
+              <div className="w-full h-full bg-[#12141c] rounded-[10px] p-4 flex flex-col justify-between items-center transition-all group-hover:bg-opacity-40">
+                <div className="text-5xl my-auto transition-transform duration-300 group-hover:scale-125">
+                  {game.image}
+                </div>
+                <div className="w-full text-center">
+                  <span className="block text-sm md:text-base font-bold text-gray-200 group-hover:text-white transition-colors">
+                    {game.title}
+                  </span>
+                </div>
+              </div>
+            </button>
+          ))}
+        </div>
+      </main>
+
+      <footer className="mt-24 bg-[#0d0e12] py-6 text-center text-sm text-gray-600 border-t border-gray-900">
+        <p>تصميم مخصص وآمن 100% - لا يتطلب أي تحميل أو فريم خارجي</p>
+      </footer>
+    </div>
+  );
+}
