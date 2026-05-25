@@ -7,8 +7,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght=400;500;700;900&display=swap');
         body { font-family: 'Tajawal', sans-serif; }
+        .slide { display: none; }
+        .slide.active { display: block; animation: fadeIn 0.8s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -80,10 +83,20 @@
                     </a>
                 </div>
             </div>
-            <div class="w-full md:w-80 h-60 rounded-2xl hidden md:block overflow-hidden shadow-xl border-4 border-gray-100 transform hover:scale-105 transition-transform duration-300">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" 
-                     alt="واجهة منزل ذكي حديث بريق القمة" 
-                     class="w-full h-full object-cover">
+            
+            <div class="w-full md:w-80 h-60 rounded-2xl hidden md:block overflow-hidden shadow-xl border-4 border-gray-100 relative">
+                <div class="slide active w-full h-full">
+                    <img src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=80" 
+                         alt="كاميرات مراقبة خارجية للمنزل" 
+                         class="w-full h-full object-cover">
+                    <span class="absolute bottom-2 right-2 bg-black/75 text-white text-xs px-2 py-1 rounded">حماية خارجية 📹</span>
+                </div>
+                <div class="slide w-full h-full">
+                    <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=800&q=80" 
+                         alt="كاميرات مراقبة داخلية للمنزل" 
+                         class="w-full h-full object-cover">
+                    <span class="absolute bottom-2 right-2 bg-blue-600 text-white text-xs px-2 py-1 rounded">مراقبة داخلية 📱</span>
+                </div>
             </div>
         </section>
 
@@ -163,6 +176,17 @@
        title="تواصل معنا عبر الواتساب">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 4000); // يقوم بالتبديل تلقائياً كل 4 ثوانٍ لشرح الفكرة بالكامل
+    </script>
 
 </body>
 </html>
