@@ -84,23 +84,24 @@
                 </div>
             </div>
             
-            <div class="w-full md:w-80 h-72 rounded-2xl hidden md:block overflow-hidden shadow-2xl border-4 border-white relative bg-gray-200">
+            <div class="w-full md:w-[400px] h-[280px] rounded-2xl hidden md:block overflow-hidden shadow-2xl border-4 border-white relative bg-gray-200">
                 <div class="slide active w-full h-full">
                     <img src="https://www.shutterstock.com/shutterstock/videos/1101513403/thumb/1.jpg?ip=x480" 
                          alt="نتيجة نظام المراقبة بريق القمة" 
-                         class="w-full h-full object-cover">
-                    <span class="absolute bottom-2 right-2 bg-blue-600 text-white text-[10px] px-2 py-1 rounded shadow-md">النتيجة النهائية 🖥️</span>
+                         class="w-full h-full object-contain bg-black">
+                    <span class="absolute bottom-2 right-2 bg-blue-600 text-white text-[11px] font-bold px-2.5 py-1 rounded shadow-md z-30">النتيجة النهائية 🖥️</span>
                 </div>
                 <div class="slide w-full h-full">
                     <img src="https://areaspy.co.ke/wp-content/uploads/CCTV-camera-installation-on-Nairobi-home-exterior-wall-by-AreaSpy-Security.png" 
                          alt="كاميرات مراقبة خارجية للمنزل" 
-                         class="w-full h-full object-cover object-top"> <span class="absolute bottom-2 right-2 bg-black/75 text-white text-[10px] px-2 py-1 rounded shadow-md">حماية خارجية 📹</span>
+                         class="w-full h-[108%] object-cover object-bottom -mt-[8%]">
+                    <span class="absolute bottom-2 right-2 bg-black/75 text-white text-[11px] font-bold px-2.5 py-1 rounded shadow-md z-30">حماية خارجية 📹</span>
                 </div>
                 <div class="slide w-full h-full">
-                    <img src="https://lh3.googleusercontent.com/d/16P0zG45V-u_Y96f3t8uE1f_B7Xv_V_S_?w=800" 
+                    <img src="https://gtsecurity.ca/wp-content/uploads/2025/08/How-to-Choose-the-Right-CCTV-Camera-System-for-Your-Toronto-Home-1.png" 
                          alt="كاميرات مراقبة داخلية للمنزل" 
                          class="w-full h-full object-cover">
-                    <span class="absolute bottom-2 right-2 bg-emerald-600 text-white text-[10px] px-2 py-1 rounded shadow-md">مراقبة داخلية 📱</span>
+                    <span class="absolute bottom-2 right-2 bg-emerald-600 text-white text-[11px] font-bold px-2.5 py-1 rounded shadow-md z-30">مراقبة داخلية 📱</span>
                 </div>
             </div>
         </section>
@@ -172,7 +173,7 @@
 
     <footer class="bg-gray-900 text-gray-400 py-8 text-center border-t border-gray-800">
         <p class="font-bold text-white mb-2">بريق القمة المميزة</p>
-        <p class="text-sm">جميع الحقوق محفوظة &copy; 2026 - حلول وأنظمة الأمان الاحترافية</p>
+        <p class="text-sm">جميع الحقوق محفوظة © 2026 - حلول وأنظمة الأمان الاحترافية</p>
     </footer>
 
     <a href="https://wa.me/96896662002" 
@@ -190,7 +191,7 @@
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
-        }, 4500); // تبديل كل 4.5 ثانية لإتاحة وقت كافٍ للرؤية
+        }, 4000); // التبديل تلقائياً كل 4 ثوانٍ
     </script>
 
 </body>
